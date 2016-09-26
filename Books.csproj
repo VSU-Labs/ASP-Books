@@ -89,6 +89,7 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="DAL\BooksContext.cs" />
     <Compile Include="DAL\BooksInitializer.cs" />
+    <Compile Include="Models\Author.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
