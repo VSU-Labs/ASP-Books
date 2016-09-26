@@ -1,7 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>@ViewBag.Title</title>
+@{
+	var title = "Books";
+	if (ViewBag.Title == "") {
+		title += " - " + ViewBag.Title;
+	}
+}
+<title>@title</title>
+<meta charset="utf-8" />
 </head>
 <body>
 	@RenderBody()

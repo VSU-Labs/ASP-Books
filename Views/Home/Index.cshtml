@@ -1,2 +1,16 @@
-﻿<h2>Welcome to ASP.NET MVC @ViewData["Version"] on @ViewData["Runtime"]!</h2>
-
+﻿@{
+	ViewBag.Title = "Main page";
+}
+<table border="1" cellpadding="8">
+	<tr>
+		<td>Название</td>
+		<td>Дата публикации</td>
+	</tr>
+@foreach (var book in ViewBag.Books)
+{
+	<tr>
+		<td>@book.Name</td>
+		<td>@book.PublishDate.ToString("dd MMMM yyyy")</td>
+	</tr>
+}
+</table>

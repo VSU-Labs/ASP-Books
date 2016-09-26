@@ -4,19 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using Books.DAL;
+using Books.Models;
 
 namespace Books.Controllers
 {
 	public class HomeController : Controller
 	{
+		private BooksContext context = new BooksContext();
+
 		public ActionResult Index ()
 		{
-			var mvcName = typeof(Controller).Assembly.GetName ();
-			var isMono = Type.GetType ("Mono.Runtime") != null;
-
-			ViewData ["Version"] = mvcName.Version.Major + "." + mvcName.Version.Minor;
-			ViewData ["Runtime"] = isMono ? "Mono" : ".NET";
-
+			ViewBag.Books = context.Books;
 			return View ();
 		}
 	}
