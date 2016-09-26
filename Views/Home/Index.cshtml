@@ -1,6 +1,7 @@
 ﻿@{
 	ViewBag.Title = "Main page";
 }
+Книги:
 <table border="1" cellpadding="8">
 	<tr>
 		<td>Название</td>
@@ -11,6 +12,21 @@
 	<tr>
 		<td>@book.Name</td>
 		<td>@book.PublishDate.ToString("dd MMMM yyyy")</td>
+	</tr>
+}
+</table>
+<br>
+Авторы:
+<table border="1" cellpadding="8">
+	<tr>
+		<td>Имя</td>
+		<td>День рождения</td>
+	</tr>
+@foreach (var author in ViewBag.Authors)
+{
+	<tr>
+		<td>@author.Name</td>
+		<td>@author.Birthday.ToString("dd MMMM yyyy")</td>
 	</tr>
 }
 </table>

@@ -16,6 +16,7 @@ namespace Books.Controllers
 		public ActionResult Index ()
 		{
 			ViewBag.Books = context.Books;
+			ViewBag.Authors = context.Authors;
 			return View ();
 		}
 	}
