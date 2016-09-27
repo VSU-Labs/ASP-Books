@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using Books.Models;
 
@@ -8,12 +9,21 @@ namespace Books.DAL
 	{
 		protected override void Seed(BooksContext context) 
 		{
-			Author Tolstoy = new Author { AuthorId = 1, Name = "Толстой", Birthday = new DateTime(1920, 1, 1)};
-			context.Authors.Add (Tolstoy);
-			Author Turgenyev = new Author { AuthorId = 2, Name = "Тургеньев", Birthday = new DateTime(1930, 1, 1)};
-			context.Authors.Add (Turgenyev);
-			context.Books.Add (new Book { BookId = 1, Name = "Война и мир", PublishDate = new DateTime(1900, 1, 1) });
-			context.Books.Add (new Book { BookId = 2, Name = "Отцы и дети", PublishDate = new DateTime(1950, 1, 1) });
+			List<Author> authors = new List<Author> {
+				new Author("Толстой", new DateTime(1920, 1, 1)),
+				new Author("Тургеньев", new DateTime(1930, 1, 1))
+			};
+
+			List<Book> books = new List<Book> {
+				new Book("Война и мир", new DateTime(1900, 1, 1)),
+				new Book("Отцы и дети", new DateTime(1950, 1, 1))
+			};
+
+			authors[0].Books.Add(books[0]);
+			authors[1].Books.Add(books[1]);
+
+			authors.ForEach (author => context.Authors.Add (author));
+			books.ForEach (book => context.Books.Add (book));
 			context.SaveChanges ();
 		}
 	}
