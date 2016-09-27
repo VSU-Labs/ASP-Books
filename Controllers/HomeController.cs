@@ -28,6 +28,15 @@ namespace Books.Controllers
 			ViewBag.authors = book.Authors;
 			return View ();
 		}
+
+		[HttpGet]
+		public ActionResult Delete(int id)
+		{
+			Book book = context.Books.Find (id);
+			context.Books.Remove (book);
+			context.SaveChanges ();
+			return RedirectToAction("Index");
+		}
 	}
 }
 
