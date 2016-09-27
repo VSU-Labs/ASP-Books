@@ -10,13 +10,18 @@ namespace Books.DAL
 		protected override void Seed(BooksContext context) 
 		{
 			List<Author> authors = new List<Author> {
-				new Author("Толстой", new DateTime(1920, 1, 1)),
-				new Author("Тургеньев", new DateTime(1930, 1, 1))
+				new Author("Толстой, Лев Николаевич", new DateTime(1828, 09, 09)),
+				new Author("Пушкин, Александр Сергеевич", new DateTime(1799, 06, 06)),
+				new Author("Тургенев, Иван Сергеевич", new DateTime(1818, 11, 09)),
+				new Author("Ильф, Илья Арнольдович", new DateTime(1897, 10, 15)),
+				new Author("Петров, Евгений Петрович", new DateTime(1902, 12, 13)),
+				new Author("Стругацкий, Аркадий Натанович", new DateTime(1925, 08, 28)),
+				new Author("Стругацкий, Борис Натанович", new DateTime(1933, 04, 15))
 			};
 
 			List<Book> books = new List<Book> {
-				new Book("Война и мир", new DateTime(1900, 1, 1)),
-				new Book("Отцы и дети", new DateTime(1950, 1, 1))
+				new Book("Война и мир", new DateTime(1869, 1, 1)),
+				new Book("Отцы и дети", new DateTime(1862, 2, 1))
 			};
 
 			authors[0].Books.Add(books[0]);
