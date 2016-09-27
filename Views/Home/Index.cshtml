@@ -6,12 +6,18 @@
 	<tr>
 		<td>Название</td>
 		<td>Дата публикации</td>
+		<td>Действия</td>
 	</tr>
 @foreach (var book in ViewBag.Books)
 {
 	<tr>
 		<td>@book.Name</td>
 		<td>@book.PublishDate.ToString("MMMM yyyy")</td>
+		<td>
+			@Html.ActionLink("Показать авторов", "ShowAuthors", new { id = book.BookId }) |
+			@Html.ActionLink("Редактировать", "Edit", new { id = book.BookId }) |
+			@Html.ActionLink("Удалить", "Delete", new { id = book.BookId })
+		</td>
 	</tr>
 }
 </table>
