@@ -19,6 +19,15 @@ namespace Books.Controllers
 			ViewBag.Authors = context.Authors;
 			return View ();
 		}
+
+		[HttpGet]
+		public ActionResult ShowAuthors (int id)
+		{
+			Book book = context.Books.Find (id);
+			ViewBag.bookTitle = book.Name;
+			ViewBag.authors = book.Authors;
+			return View ();
+		}
 	}
 }
 

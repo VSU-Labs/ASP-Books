@@ -1,0 +1,17 @@
+﻿@{
+	ViewBag.Title = "Main page";
+}
+Авторы @ViewBag.bookTitle:
+<table border="1" cellpadding="8">
+	<tr>
+		<td>ФИО</td>
+		<td>День рождения</td>
+	</tr>
+@foreach (var author in ViewBag.Authors)
+{
+	<tr>
+		<td>@author.Name</td>
+		<td>@author.Birthday.ToString("dd MMMM yyyy")</td>
+	</tr>
+}
+</table>
