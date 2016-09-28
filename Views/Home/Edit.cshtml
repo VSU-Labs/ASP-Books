@@ -1,4 +1,5 @@
 ﻿@model Books.Models.Book
+<h4>Редактирование книги "@ViewBag.Title"</h4>
 @{
 ViewBag.Title = "\"" + ViewBag.Title + "\" | Редактирование";
 var bookId = @Html.DisplayFor(model => model.BookId);
@@ -16,6 +17,18 @@ var publishDate = @Html.DisplayFor(model => model.PublishDate);
 	@Html.LabelFor(model => model.PublishDate):<br>
 	@Html.TextBoxFor(model => model.PublishDate, new { @Value = publishDate})
 	@Html.ValidationMessageFor(model => model.PublishDate)<br>
+	<br>
+
+	@Html.LabelFor(model => model.Authors):<br>
+	@{
+		var fullAuthorsList = Model.Authors.ToList();
+		var authorList = ViewBag.Authors;
+		foreach (var author in authorList) {
+			var check = fullAuthorsList.Contains(author);
+			var checkText = check ? "checked" : "";
+			<input type="checkbox" name="Authors" @checkText value="@author.AuthorId">@author.Name<br>
+		}
+	}
 	<br>
 	<input type="submit" value="Изменить">
 </form>

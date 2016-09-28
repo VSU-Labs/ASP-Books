@@ -45,6 +45,7 @@ namespace Books.Models
 		[DataType(DataType.Date, ErrorMessage = "Неверный формат даты")]
 		public DateTime PublishDate { get; set; }
 
+		[DisplayName("Авторы")]
 		public virtual List<Author> Authors { get; set; }
 	}
 }
