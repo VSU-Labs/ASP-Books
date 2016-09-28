@@ -8,6 +8,7 @@ namespace Books.Models
 	public class Book
 	{
 		public Book() {
+			Authors = new List<Author> ();
 		}
 
 		public Book(String title, DateTime publishDate) {
@@ -34,14 +35,17 @@ namespace Books.Models
 		public int BookId { get; set; }
 
 		[DisplayName("Название")]
+		[Required(ErrorMessage = "У книги должно быть название")]
 		public String Title { get; set; }
 
 
 		[DisplayName("Дата публикации")]
 		[DisplayFormat(DataFormatString = "{0:MMMM yyyy}")]
+		[Required(ErrorMessage = "У книги должна быть указана дата публикации")]
+		[DataType(DataType.Date, ErrorMessage = "Неверный формат даты")]
 		public DateTime PublishDate { get; set; }
 
-		public virtual ICollection<Author> Authors { get; set; }
+		public virtual List<Author> Authors { get; set; }
 	}
 }
 

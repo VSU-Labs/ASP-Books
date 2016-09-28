@@ -9,13 +9,14 @@ var publishDate = @Html.DisplayFor(model => model.PublishDate);
 	@Html.HiddenFor(p => p.BookId)
 
 	@Html.LabelFor(model => model.Title):<br>
-	@Html.EditorFor(model => model.Title)<br>
+	@Html.EditorFor(model => model.Title)
+	@Html.ValidationMessageFor(model => model.Title)<br>
 	<br>
 
 	@Html.LabelFor(model => model.PublishDate):<br>
-	@Html.TextBoxFor(model => model.PublishDate, new { @Value = publishDate})<br>
+	@Html.TextBoxFor(model => model.PublishDate, new { @Value = publishDate})
+	@Html.ValidationMessageFor(model => model.PublishDate)<br>
 	<br>
-
 	<input type="submit" value="Изменить">
 </form>
 @Html.ActionLink("Назад", "..")

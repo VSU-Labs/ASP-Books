@@ -47,8 +47,13 @@ namespace Books.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Edit(Book book, List<int> list)
+		public ActionResult Edit(Book book)
 		{
+			ViewBag.Authors = context.Authors;
+			ViewBag.Title = book.Title;
+			if (!ModelState.IsValid)
+				return View (book);
+			
 			Book oldBook = context.Books.Find (book.BookId);
 			oldBook.Clone(book);
 			context.SaveChanges ();
