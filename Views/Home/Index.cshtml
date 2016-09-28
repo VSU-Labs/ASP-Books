@@ -21,18 +21,3 @@
 	</tr>
 }
 </table>
-<br>
-Авторы:
-<table border="1" cellpadding="8">
-	<tr>
-		<td align="center">ФИО</td>
-		<td align="center">День рождения</td>
-	</tr>
-@foreach (var author in ViewBag.Authors)
-{
-	<tr>
-		<td>@author.Name</td>
-		<td>@author.Birthday.ToString("dd MMMM yyyy")</td>
-	</tr>
-}
-</table>
