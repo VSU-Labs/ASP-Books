@@ -1,18 +1,23 @@
 ﻿@{
 	ViewBag.Title = "Main page";
 }
+@model IEnumerable<Books.Models.Book>
 Книги:
 <table border="1" cellpadding="8">
 	<tr>
-		<td align="center">Название</td>
-		<td align="center">Дата публикации</td>
+		<td align="center">
+			@Html.DisplayNameFor(model => model.First().Title)
+		</td>
+		<td align="center">
+			@Html.DisplayNameFor(model => model.First().PublishDate)
+		</td>
 		<td align="center">Действия</td>
 	</tr>
-@foreach (var book in ViewBag.Books)
+@foreach (var book in Model)
 {
 	<tr>
-		<td>@book.Name</td>
-		<td>@book.PublishDate.ToString("MMMM yyyy")</td>
+		<td>@Html.DisplayFor(modelItem => book.Title)</td>
+		<td>@Html.DisplayFor(modelItem => book.PublishDate)</td>
 		<td>
 			@Html.ActionLink("Показать авторов", "ShowAuthors", new { id = book.BookId }) |
 			@Html.ActionLink("Редактировать", "Edit", new { id = book.BookId }) |

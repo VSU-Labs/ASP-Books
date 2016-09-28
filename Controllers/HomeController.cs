@@ -17,14 +17,14 @@ namespace Books.Controllers
 		{
 			ViewBag.Books = context.Books;
 			ViewBag.Authors = context.Authors;
-			return View ();
+			return View (context.Books);
 		}
 
 		[HttpGet]
 		public ActionResult ShowAuthors (int id)
 		{
 			Book book = context.Books.Find (id);
-			ViewBag.bookTitle = book.Name;
+			ViewBag.bookTitle = book.Title;
 			ViewBag.authors = book.Authors;
 			return View ();
 		}

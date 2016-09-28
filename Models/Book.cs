@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Books.Models
 {
@@ -8,16 +10,22 @@ namespace Books.Models
 		public Book() {
 		}
 
-		public Book(String name, DateTime publishDate) {
+		public Book(String title, DateTime publishDate) {
 			BookId = maxId++;
-			Name = name;
+			Title = title;
 			PublishDate = publishDate;
 			Authors = new List<Author> ();
 		}
 
 		private int maxId = 1;
 		public int BookId { get; set; }
-		public String Name { get; set; }
+
+		[DisplayName("Название")]
+		public String Title { get; set; }
+
+
+		[DisplayName("Дата публикации")]
+		[DisplayFormat(DataFormatString = "{0:MMMM yyyy}")]
 		public DateTime PublishDate { get; set; }
 
 		public virtual ICollection<Author> Authors { get; set; }
