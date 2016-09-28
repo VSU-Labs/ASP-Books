@@ -47,13 +47,21 @@ namespace Books.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Edit(Book book)
+		public ActionResult Edit([Bind(Include = "BookId, Title, PublishDate")]Book book)
 		{
 			ViewBag.Authors = context.Authors;
 			ViewBag.Title = book.Title;
+
 			if (!ModelState.IsValid)
 				return View (book);
-			
+
+			string[] authorsId = Request.Form.GetValues ("Authors");
+			foreach (String stringId in authorsId) {
+				int id = Int32.Parse (stringId);
+				Author author = context.Authors.Find (id);
+				book.Authors.Add (author);
+			}
+
 			Book oldBook = context.Books.Find (book.BookId);
 			oldBook.Clone(book);
 			context.SaveChanges ();
