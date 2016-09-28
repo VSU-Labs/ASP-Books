@@ -17,6 +17,19 @@ namespace Books.Models
 			Authors = new List<Author> ();
 		}
 
+		public void Clone(Book book) {
+			BookId = book.BookId;
+			Title = book.Title;
+			PublishDate = book.PublishDate;
+			Authors.Clear ();
+			if (book.Authors == null)
+				return;
+
+			foreach (Author author in book.Authors) {
+				Authors.Add (author);
+			}
+		}
+
 		private int maxId = 1;
 		public int BookId { get; set; }
 
