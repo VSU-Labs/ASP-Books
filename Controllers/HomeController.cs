@@ -36,6 +36,24 @@ namespace Books.Controllers
 			context.SaveChanges ();
 			return RedirectToAction("Index");
 		}
+
+		[HttpGet]
+		public ActionResult Edit(int id)
+		{
+			Book book = context.Books.Find (id);
+			ViewBag.Authors = context.Authors;
+			ViewBag.Title = book.Title;
+			return View (book);
+		}
+
+		[HttpPost]
+		public ActionResult Edit(Book book, List<int> list)
+		{
+			Book oldBook = context.Books.Find (book.BookId);
+			oldBook.Clone(book);
+			context.SaveChanges ();
+			return RedirectToAction("Index");
+		}
 	}
 }
 

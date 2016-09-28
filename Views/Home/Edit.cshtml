@@ -1,0 +1,21 @@
+﻿@model Books.Models.Book
+@{
+ViewBag.Title = "\"" + ViewBag.Title + "\" | Редактирование";
+var bookId = @Html.DisplayFor(model => model.BookId);
+var title = @Html.DisplayFor(model => model.Title);
+var publishDate = @Html.DisplayFor(model => model.PublishDate);
+}
+<form method="post">
+	@Html.HiddenFor(p => p.BookId)
+
+	@Html.LabelFor(model => model.Title):<br>
+	@Html.EditorFor(model => model.Title)<br>
+	<br>
+
+	@Html.LabelFor(model => model.PublishDate):<br>
+	@Html.TextBoxFor(model => model.PublishDate, new { @Value = publishDate})<br>
+	<br>
+
+	<input type="submit" value="Изменить">
+</form>
+@Html.ActionLink("Назад", "..")
