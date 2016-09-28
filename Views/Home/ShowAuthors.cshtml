@@ -1,17 +1,24 @@
-﻿@{
-	ViewBag.Title = "Main page";
-}
-Авторы @ViewBag.bookTitle:
+﻿@model IEnumerable<Books.Models.Author>
+
+Авторы книги "@ViewBag.Title"
 <table border="1" cellpadding="8">
 	<tr>
-		<td align="center">ФИО</td>
-		<td align="center">День рождения</td>
+		<td align="center">
+			@Html.DisplayNameFor(model => model.First().Name)
+		</td>
+		<td align="center">
+			@Html.DisplayNameFor(model => model.First().Birthday)
+		</td>
 	</tr>
-@foreach (var author in ViewBag.Authors)
+@foreach (var author in Model)
 {
 	<tr>
-		<td>@author.Name</td>
-		<td>@author.Birthday.ToString("dd MMMM yyyy")</td>
+		<td>
+			@Html.DisplayFor(modelItem => author.Name)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => author.Birthday)
+		</td>
 	</tr>
 }
 </table>

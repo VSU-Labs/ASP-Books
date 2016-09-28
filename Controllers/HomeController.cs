@@ -24,9 +24,8 @@ namespace Books.Controllers
 		public ActionResult ShowAuthors (int id)
 		{
 			Book book = context.Books.Find (id);
-			ViewBag.bookTitle = book.Title;
-			ViewBag.authors = book.Authors;
-			return View ();
+			ViewBag.Title = book.Title;
+			return View (book.Authors);
 		}
 
 		[HttpGet]
