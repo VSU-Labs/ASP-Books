@@ -2,9 +2,9 @@
 <html>
 <head>
 @{
-	var title = "Books";
-	if (ViewBag.Title != "") {
-		title += " - " + ViewBag.Title;
+	var title = "Книжный справочник";
+	if (ViewBag.Title != null && ViewBag.Title != "") {
+		title = ViewBag.Title + " | " + title;
 	}
 }
 <title>@title</title>
