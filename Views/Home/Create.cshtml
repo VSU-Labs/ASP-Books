@@ -1,0 +1,30 @@
+﻿@model Books.Models.Book
+<h4>Добавление новой книги</h4>
+@{
+ViewBag.Title = "Добавление";
+}
+<form method="post" action="Edit">
+	@Html.LabelFor(model => model.Title):<br>
+	@Html.EditorFor(model => model.Title)
+	@Html.ValidationMessageFor(model => model.Title)<br>
+	<br>
+
+	@Html.LabelFor(model => model.PublishDate):<br>
+	@Html.TextBoxFor(model => model.PublishDate, new { @Value = ""})
+	@Html.ValidationMessageFor(model => model.PublishDate)<br>
+	<br>
+
+	@Html.LabelFor(model => model.Authors):<br>
+	@{
+		var fullAuthorsList = Model.Authors.ToList();
+		var authorList = ViewBag.Authors;
+		foreach (var author in authorList) {
+			var check = fullAuthorsList.Contains(author);
+			var checkText = check ? "checked" : "";
+			<input type="checkbox" name="Authors" @checkText value="@author.AuthorId">@author.Name<br>
+		}
+	}
+	<br>
+	<input type="submit" value="Сохранить">
+</form>
+@Html.ActionLink("Отмена", "..")

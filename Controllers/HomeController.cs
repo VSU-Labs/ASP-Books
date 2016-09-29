@@ -46,14 +46,18 @@ namespace Books.Controllers
 			return View (book);
 		}
 
+		[HttpGet]
+		public ActionResult Create()
+		{
+			ViewBag.Authors = context.Authors;
+			return View (new Book());
+		}
+
 		[HttpPost]
 		public ActionResult Edit([Bind(Include = "BookId, Title, PublishDate")]Book book)
 		{
 			ViewBag.Authors = context.Authors;
 			ViewBag.Title = book.Title;
-
-			if (!ModelState.IsValid)
-				return View (book);
 
 			string[] authorsId = Request.Form.GetValues ("Authors");
 			foreach (String stringId in authorsId) {
@@ -62,8 +66,15 @@ namespace Books.Controllers
 				book.Authors.Add (author);
 			}
 
+			if (!ModelState.IsValid)
+				return View (book);
+
 			Book oldBook = context.Books.Find (book.BookId);
-			oldBook.Clone(book);
+			if (oldBook != null)
+				oldBook.Clone (book);
+			else
+				context.Books.Add (book);
+			
 			context.SaveChanges ();
 			return RedirectToAction("Index");
 		}

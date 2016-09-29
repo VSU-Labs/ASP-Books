@@ -103,6 +103,7 @@
     <Content Include="Views\Home\ShowAuthors.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Content\style.css" />
+    <Content Include="Views\Home\Create.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
