@@ -60,6 +60,9 @@ namespace Books.Controllers
 			ViewBag.Title = book.Title;
 
 			string[] authorsId = Request.Form.GetValues ("Authors");
+			if (authorsId == null)
+				return View (book);
+			
 			foreach (String stringId in authorsId) {
 				int id = Int32.Parse (stringId);
 				Author author = context.Authors.Find (id);

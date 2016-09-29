@@ -29,6 +29,7 @@ var publishDate = @Html.DisplayFor(model => model.PublishDate);
 			<input type="checkbox" name="Authors" @checkText value="@author.AuthorId">@author.Name<br>
 		}
 	}
+	@Html.ValidationMessageFor(model => model.Authors)
 	<br>
 	<input type="submit" value="Изменить">
 </form>

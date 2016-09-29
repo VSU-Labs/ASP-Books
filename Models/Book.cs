@@ -46,6 +46,7 @@ namespace Books.Models
 		public DateTime PublishDate { get; set; }
 
 		[DisplayName("Авторы")]
+		[Required(ErrorMessage = "У книги должен ыть хотя бы один автор")]
 		public virtual List<Author> Authors { get; set; }
 	}
 }
