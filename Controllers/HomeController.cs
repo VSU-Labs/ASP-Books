@@ -13,11 +13,12 @@ namespace Books.Controllers
 	{
 		private BooksContext context = new BooksContext();
 
-		public ActionResult Index ()
+		public ActionResult Index (String name = "")
 		{
 			ViewBag.Books = context.Books;
 			ViewBag.Authors = context.Authors;
-			return View (context.Books);
+			IEnumerable<Book> books = context.Books.Where(b => b.Title.Contains(name));
+			return View (books);
 		}
 
 		[HttpGet]

@@ -2,6 +2,12 @@
 	ViewBag.Title = "Главная";
 }
 @model IEnumerable<Books.Models.Book>
+<form action="/" method="get">
+	Поиск по названию:<br>
+	<input name="name" type="search">
+	<input type="submit" value="Искать">
+</form>
+<br>
 Книги:
 <table border="1" cellpadding="8">
 	<tr>
