@@ -25,7 +25,7 @@ namespace Books.DAL
 			};
 
 			authors[0].Books.Add(books[0]);
-			authors[1].Books.Add(books[1]);
+			authors[1].Books.Add(books[2]);
 
 			authors.ForEach (author => context.Authors.Add (author));
 			books.ForEach (book => context.Books.Add (book));
